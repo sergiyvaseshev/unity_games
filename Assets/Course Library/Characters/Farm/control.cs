@@ -6,12 +6,14 @@ public class control : MonoBehaviour
 {
     private int gameObjectSpawnNum;
     public float speed;
-    public float bound;
+    public float jumpForce = 20;
     public float gravityModifier;
     public GameObject gameObjectSpawn;
-
+    public float bound;
+    public bool isOnGround;
     public Rigidbody rigidbodyPlayer;
     public GameObject[] gameObjectsSpawn;
+    public Transform spawntransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,20 +27,31 @@ public class control : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            rigidbodyPlayer.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            if (isOnGround==true)
+            {
+                rigidbodyPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+            }
            
         }
-        
+        if (transform.position.y < bound)
+        {
+            transform.position = spawntransform.position;
+        }
 
 
-       
+
+
         var HorizontalInput = Input.GetAxis("Horizontal");
 
         // move the plane forward at a constant rate
         transform.Translate(Vector3.right * speed * Time.deltaTime * HorizontalInput);
 
     }
-   
-
-  
+    private void OnCollisionEnter(Collision collision)
+    {
+        isOnGround = true;
     }
+
+
+}
