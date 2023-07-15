@@ -14,6 +14,7 @@ public class control : MonoBehaviour
     public Rigidbody rigidbodyPlayer;
     public GameObject[] gameObjectsSpawn;
     public Transform spawntransform;
+    public bool gameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +51,19 @@ public class control : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        isOnGround = true;
+
+    if (collision.gameObject.CompareTag("Ground") )
+        {
+            isOnGround = true;
+        } else if (collision.gameObject.CompareTag("obstacles"))
+        {
+            gameOver= true;
+            Debug.Log("gameOver= " );
+
+        }
+
+
+        
     }
 
 

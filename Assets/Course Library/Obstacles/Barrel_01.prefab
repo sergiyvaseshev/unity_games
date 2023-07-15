@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1355066434454145448}
   m_Layer: 0
   m_Name: Barrel_01
-  m_TagString: Untagged
+  m_TagString: obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   bound: -8
+  destroyObject: 1
 --- !u!54 &6959073959579809104
 Rigidbody:
   m_ObjectHideFlags: 0
