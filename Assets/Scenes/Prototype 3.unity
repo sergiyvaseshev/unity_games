@@ -375,7 +375,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 6f52b946693e54048af74f5cd6ba49f8, type: 3}
       propertyPath: m_Name
-      value: SimpleFarmer_Man_01_Brown
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6f52b946693e54048af74f5cd6ba49f8, type: 3}
       propertyPath: m_RootOrder
@@ -469,6 +469,7 @@ MonoBehaviour:
   rigidbodyPlayer: {fileID: 738150252}
   gameObjectsSpawn: []
   spawntransform: {fileID: 786561708}
+  gameOver: 0
 --- !u!65 &738150256
 BoxCollider:
   m_ObjectHideFlags: 0
