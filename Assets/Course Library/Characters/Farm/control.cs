@@ -15,6 +15,7 @@ public class control : MonoBehaviour
     public GameObject[] gameObjectsSpawn;
     public Transform spawntransform;
     public bool gameOver;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,9 @@ public class control : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            if (isOnGround==true)
+            if (isOnGround==true && !gameOver)
             {
+                animator.SetTrigger("Jump_trig");
                 rigidbodyPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 isOnGround = false;
             }
@@ -58,6 +60,7 @@ public class control : MonoBehaviour
         } else if (collision.gameObject.CompareTag("obstacles"))
         {
             gameOver= true;
+            animator.SetBool("Death_b", true);
             Debug.Log("gameOver= " );
 
         }

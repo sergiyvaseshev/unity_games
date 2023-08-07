@@ -377,6 +377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6f52b946693e54048af74f5cd6ba49f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6f52b946693e54048af74f5cd6ba49f8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -470,6 +474,7 @@ MonoBehaviour:
   gameObjectsSpawn: []
   spawntransform: {fileID: 786561708}
   gameOver: 0
+  animator: {fileID: 738150257}
 --- !u!65 &738150256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -483,6 +488,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3620073, y: 3.9064045, z: 1}
   m_Center: {x: -0.18081938, y: 1.4532026, z: 0.000030454203}
+--- !u!95 &738150257 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 6f52b946693e54048af74f5cd6ba49f8, type: 3}
+  m_PrefabInstance: {fileID: 738150250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &786561707
 GameObject:
   m_ObjectHideFlags: 0
