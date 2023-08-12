@@ -44,6 +44,7 @@ public class Spawner : MonoBehaviour
 
         gameObjectSpawnNum = Random.Range(0, gameObjectsSpawn.Length);
         Debug.Log("тест gameObjectSpawnNum = " + gameObjectSpawnNum);*/
+        gameObjectSpawnNum = Random.Range(0, gameObjectsSpawn.Length);
         if (player.gameOver == false)
         {
 
