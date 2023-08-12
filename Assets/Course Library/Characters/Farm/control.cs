@@ -16,6 +16,11 @@ public class control : MonoBehaviour
     public Transform spawntransform;
     public bool gameOver;
     public Animator animator;
+    public ParticleSystem explosion;
+    public ParticleSystem dirt;
+    public AudioClip jumpSound;
+    public AudioClip crashSound;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +36,9 @@ public class control : MonoBehaviour
         {
             if (isOnGround==true && !gameOver)
             {
+                dirt.Stop();
                 animator.SetTrigger("Jump_trig");
+                audioSource.PlayOneShot(jumpSound, 1.0f);
                 rigidbodyPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 isOnGround = false;
             }
@@ -56,10 +63,14 @@ public class control : MonoBehaviour
 
     if (collision.gameObject.CompareTag("Ground") )
         {
+            dirt.Play();
             isOnGround = true;
         } else if (collision.gameObject.CompareTag("obstacles"))
         {
             gameOver= true;
+            audioSource.PlayOneShot(crashSound, 1.0f);
+            dirt.Stop();
+            explosion.Play();
             animator.SetBool("Death_b", true);
             Debug.Log("gameOver= " );
 
