@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float speed;
     public Rigidbody rigidbody;
-    private GameObject focalPoint;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        focalPoint = GameObject.Find("FocalPoint");
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        float forwardInput = Input.GetAxis("Vertical");
-        rigidbody.AddForce(focalPoint.transform.forward* speed * forwardInput);
+        rigidbody.AddForce((player.transform.position - transform.position).normalized * speed);
     }
 }
