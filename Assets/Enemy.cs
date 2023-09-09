@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidbody.AddForce((player.transform.position - transform.position).normalized * speed);
+        var lookDirection = (player.transform.position - transform.position).normalized;
+        rigidbody.AddForce(lookDirection* speed);
     }
 }
