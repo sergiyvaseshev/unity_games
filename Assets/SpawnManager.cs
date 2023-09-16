@@ -9,8 +9,15 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-       
+
+
+        Spawn();
+    }
+    [ContextMenu("Spawn")]
+    void Spawn()
+    {
+
+
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
     }
 
@@ -29,3 +36,7 @@ public class SpawnManager : MonoBehaviour
     }
 
 }
+
+
+
+    
