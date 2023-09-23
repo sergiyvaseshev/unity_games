@@ -6,12 +6,14 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public float spawnRange = 9f;
+    public int enemyCount ;
     // Start is called before the first frame update
     void Start()
     {
-
-
-        Spawn();
+        for(int i = 0; i < enemyCount; i++)
+        {
+            Spawn();
+        }
     }
     [ContextMenu("Spawn")]
     void Spawn()
