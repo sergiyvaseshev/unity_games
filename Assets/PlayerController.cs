@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float respawnPos;
     public Rigidbody rigidbody;
     private GameObject focalPoint;
-    public GameObject powerup;
+    public GameObject powerup;public GameObject cars;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cars.gameObject.transform.position= transform.position;
         if(transform.position.y< respawnPos)
         {
             rigidbody.velocity = Vector3.zero;
