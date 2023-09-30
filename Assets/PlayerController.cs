@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
         }
         float forwardInput = Input.GetAxis("Vertical");
         rigidbody.AddForce(focalPoint.transform.forward* speed * forwardInput);
+
+        powerup.gameObject.transform.position = transform.position + new Vector3(0, -0.1f, 0);
     }
     private void OnTriggerEnter(Collider other)
     {
