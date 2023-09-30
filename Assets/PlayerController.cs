@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         if(transform.position.y< respawnPos)
         {
+            rigidbody.velocity = Vector3.zero;
             transform.position = Vector3.zero;
         }
         float forwardInput = Input.GetAxis("Vertical");

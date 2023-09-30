@@ -128,4 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  destroyEnemyHeight: 15
   rigidbody: {fileID: 6347623671153025185}
