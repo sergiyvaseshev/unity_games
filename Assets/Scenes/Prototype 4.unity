@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61b64c5e903aa841940436c37009ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6347623671153025184, guid: 745b6bee45ee16049ad9a73be3b3ac38, type: 3}
+  enemyPrefab: {fileID: 6347623671153025190, guid: 745b6bee45ee16049ad9a73be3b3ac38, type: 3}
+  carsView: {fileID: 746164960644574119, guid: a9280dc3ce074b04888540e4445f2ae6, type: 3}
   spawnRange: 9
   enemyCount: 0
   enemySpawnCount: 3

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public Enemy enemyPrefab;
+    public GameObject carsView;
     public float spawnRange = 9f;
     public int enemyCount ;
     public int enemySpawnCount;
@@ -20,8 +21,12 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-            
+
+          var enemy=  Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+          var enemyView=  Instantiate(carsView);
+
+            enemy.SetCars(enemyView);
+         
         }
 
      
