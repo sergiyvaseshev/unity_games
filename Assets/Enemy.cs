@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
         if (setcars)
         {
             cars.gameObject.transform.position = transform.position;
+            cars.gameObject.transform.rotation = new Quaternion(cars.gameObject.transform.rotation.x, transform.rotation.y, cars.gameObject.transform.rotation.z, cars.gameObject.transform.rotation.w);
         }
         
         var lookDirection = (player.transform.position - transform.position).normalized;

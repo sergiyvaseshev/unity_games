@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public float respawnPos;
     public Rigidbody rigidbody;
     private GameObject focalPoint;
-    public GameObject powerup;public GameObject cars;
+    public GameObject powerup; 
+    public GameObject cars;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         cars.gameObject.transform.position= transform.position;
+        cars.gameObject.transform.rotation = new Quaternion(cars.gameObject.transform.rotation.x, transform.rotation.y, cars.gameObject.transform.rotation.z, cars.gameObject.transform.rotation.w);
         if(transform.position.y< respawnPos)
         {
             rigidbody.velocity = Vector3.zero;
