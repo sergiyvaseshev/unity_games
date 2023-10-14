@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
         transform.position = RandomSpawnPos();
     }
 
+
     Vector3 RandomForce()
     {
         return Vector3.up * Random.Range(minSpeed, maxSpeed);
@@ -36,8 +37,19 @@ public class Target : MonoBehaviour
 
 
     }
-    // Update is called once per frame
-    
+
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);    
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Destroy"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
 
 
