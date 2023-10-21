@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 1004604514}
   - component: {fileID: 1004604513}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,6 +612,8 @@ MonoBehaviour:
   spawnRange: 9
   enemyCount: 0
   enemySpawnCount: 3
+  text: {fileID: 492164950}
+  score: 0
 --- !u!4 &1004604514
 Transform:
   m_ObjectHideFlags: 0

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] enemyPrefab;
@@ -11,10 +12,13 @@ public class SpawnManager : MonoBehaviour
     public int enemyCount;
     public int enemySpawnCount;
     private float spawnRate = 1.0f;
+    public TextMeshProUGUI text;
+
+    public int score;
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateScore(0);
         StartCoroutine(SpawnTarget());
     }
     IEnumerator SpawnTarget()
@@ -26,13 +30,14 @@ public class SpawnManager : MonoBehaviour
             Instantiate(enemyPrefab[index]);
 
         }
+
     }
-    [ContextMenu("Spawn")]
-    void Spawn(int count)
 
+
+
+    public void UpdateScore(int scoreToAdd)
     {
-
-       
-
+        score+= scoreToAdd;
+        text.text = "Score : " + score;
     }
 }
