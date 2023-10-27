@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour
     public int enemySpawnCount;
     private float spawnRate = 1.0f;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI text1;
+    public GameObject gameOver;
+
+    public TextMeshProUGUI timerText;
+    private float elapsedTime = 0.0f;
+    private bool isRunning = true;
+    public float maxTime;
 
     public int score;
     // Start is called before the first frame update
@@ -20,6 +27,27 @@ public class GameManager : MonoBehaviour
     {
         UpdateScore(0);
         StartCoroutine(SpawnTarget());
+    }
+
+    private void Update()
+    {
+        {
+            if (isRunning)
+            {
+                if (elapsedTime >= maxTime)
+                {
+                    gameOver.SetActive(true);
+                    elapsedTime = maxTime;
+                    isRunning = false;
+                }
+
+                elapsedTime += Time.deltaTime;
+                int minutes = Mathf.FloorToInt(elapsedTime / 60);
+                int seconds = Mathf.FloorToInt(elapsedTime % 60);
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+        }
+
     }
     IEnumerator SpawnTarget()
     {
@@ -39,5 +67,6 @@ public class GameManager : MonoBehaviour
     {
         score+= scoreToAdd;
         text.text = "Score : " + score;
+        text1.text = "Score : " + score;
     }
 }

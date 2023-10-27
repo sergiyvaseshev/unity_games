@@ -11,10 +11,13 @@ public class Target : MonoBehaviour
     private float maxTorque = 10;
     private float xRange = 4;
     private float SpawnPos = -6;
+    public int pointValue = 5;
     private GameManager gameManager;
+    public ParticleSystem explosionParticle;
     // Start is called before the first frame update
     void Start()
     {
+
         gameManager= GameObject.Find("GameManager").GetComponent<GameManager>();
         rigidbody= GetComponent<Rigidbody>();
 
@@ -23,6 +26,7 @@ public class Target : MonoBehaviour
 
         transform.position = RandomSpawnPos();
     }
+
 
 
     Vector3 RandomForce()
@@ -42,8 +46,10 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.UpdateScore(5);
-        Destroy(gameObject);    
+
+        gameManager.UpdateScore(pointValue);
+        Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
     }
     private void OnCollisionEnter(Collision collision)
     {
