@@ -11,17 +11,28 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI text;
     public TextMeshProUGUI text1;
     public GameObject gameOver;
+    public GameObject gameWin;
     public TextMeshProUGUI timerText;
     private float elapsedTime = 0.0f;
     private bool isRunning = true;
      private float spawnRate = 1.0f;
     public bool isGameOver;
-
+    public int health;
+    public int winScore;
+    public GameObject healthView;
+    public GameObject healthViewPrefab;
+    public List <GameObject> healthViewPrefabs=new();
 
     public int score;
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < health; i++)
+        {
+            var healthObject = Instantiate(healthViewPrefab, healthView.transform);
+            healthViewPrefabs.Add(healthObject);
+        }
+
         UpdateScore(0);
         StartCoroutine(SpawnTarget());
     }
@@ -33,10 +44,8 @@ public class GameManager : MonoBehaviour
             {
                 if (elapsedTime >= maxTime)
                 {
-                    isGameOver = true;
-                    gameOver.SetActive(true);
-                    elapsedTime = maxTime;
-                    isRunning = false;
+                    GameOver(false);
+                   elapsedTime = maxTime;
                 }
 
                 elapsedTime += Time.deltaTime;
@@ -63,8 +72,38 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore(int scoreToAdd)
     {
+        if (scoreToAdd < 0)
+        {
+            health--;
+            healthViewPrefabs[health].SetActive(false);
+
+            if (health == 0)
+            {
+                GameOver(false);
+            }
+        }
         score+= scoreToAdd;
+
+        if(score >= winScore)
+        {
+            GameOver(true);
+        }
         text.text = "Score : " + score;
         text1.text = "Score : " + score;
+    }
+
+    private void GameOver(bool win)
+    {
+        isGameOver = true;
+        if(win)
+        {
+            gameWin.SetActive(true);
+        }
+        else
+        {
+            gameOver.SetActive(true);
+        }
+       
+        isRunning = false;
     }
 }
