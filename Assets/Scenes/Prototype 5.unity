@@ -880,15 +880,11 @@ MonoBehaviour:
   - {fileID: 1558510988610266, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
   - {fileID: 1833534958246786, guid: 07cd57be5fe3a3a4082d14214f7c6ba1, type: 3}
   - {fileID: 1559113662988582, guid: c771dc487345feb4aa9946a24d7d7713, type: 3}
-  carsView: {fileID: 1547116696582102, guid: f750d5f061e724f4c827ab6b376e2550, type: 3}
-  spawnRange: 9
-  enemyCount: 0
-  enemySpawnCount: 3
+  maxTime: 30
   text: {fileID: 492164950}
   text1: {fileID: 478916286}
   gameOver: {fileID: 1636117857}
   timerText: {fileID: 1238496785}
-  maxTime: 60
   score: 0
 --- !u!4 &1004604514
 Transform:

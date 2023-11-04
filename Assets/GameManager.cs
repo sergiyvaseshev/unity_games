@@ -7,19 +7,16 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] enemyPrefab;
-    public GameObject carsView;
-    public float spawnRange = 9f;
-    public int enemyCount;
-    public int enemySpawnCount;
-    private float spawnRate = 1.0f;
+   public float maxTime;
     public TextMeshProUGUI text;
     public TextMeshProUGUI text1;
     public GameObject gameOver;
-
     public TextMeshProUGUI timerText;
     private float elapsedTime = 0.0f;
     private bool isRunning = true;
-    public float maxTime;
+     private float spawnRate = 1.0f;
+    public bool isGameOver;
+
 
     public int score;
     // Start is called before the first frame update
@@ -36,6 +33,7 @@ public class GameManager : MonoBehaviour
             {
                 if (elapsedTime >= maxTime)
                 {
+                    isGameOver = true;
                     gameOver.SetActive(true);
                     elapsedTime = maxTime;
                     isRunning = false;
@@ -51,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator SpawnTarget()
     {
-        while(true)
+        while(!isGameOver)
         {
             yield return new WaitForSeconds(spawnRate);
             int index= Random.Range(0,enemyPrefab.Length);

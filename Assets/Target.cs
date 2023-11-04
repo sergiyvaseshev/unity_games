@@ -46,6 +46,10 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (gameManager.isGameOver == true)
+        {
+            return;
+        }
 
         gameManager.UpdateScore(pointValue);
         Destroy(gameObject);
