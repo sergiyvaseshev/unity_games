@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,11 +26,16 @@ public class GameManager : MonoBehaviour
     public PanelData GameWinPanel;
     public PanelData GameOverPanel;
     public int score;
+    public Button Hard, Easy, Medium;
     // Start is called before the first frame update
     void Start()
     {
         GameWinPanel.RestartButton.onClick.AddListener(RestartGame);
         GameOverPanel.RestartButton.onClick.AddListener(RestartGame);
+
+        Hard.onClick.AddListener(RestartGame);
+       Easy .onClick.AddListener(EasyGame);
+      Medium  .onClick.AddListener(RestartGame);
 
         for (int i = 0; i < health; i++)
         {
@@ -116,6 +122,10 @@ public class GameManager : MonoBehaviour
     private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }private void EasyGame ()
+    {
+        winScore *= 1;
 
     }
 }
