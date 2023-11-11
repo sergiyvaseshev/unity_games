@@ -1,7 +1,9 @@
+using Assets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +11,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemyPrefab;
    public float maxTime;
     public TextMeshProUGUI text;
-    public TextMeshProUGUI text1;
-    public GameObject gameOver;
-    public GameObject gameWin;
     public TextMeshProUGUI timerText;
     private float elapsedTime = 0.0f;
     private bool isRunning = true;
@@ -23,10 +22,15 @@ public class GameManager : MonoBehaviour
     public GameObject healthViewPrefab;
     public List <GameObject> healthViewPrefabs=new();
 
+    public PanelData GameWinPanel;
+    public PanelData GameOverPanel;
     public int score;
     // Start is called before the first frame update
     void Start()
     {
+        GameWinPanel.RestartButton.onClick.AddListener(RestartGame);
+        GameOverPanel.RestartButton.onClick.AddListener(RestartGame);
+
         for (int i = 0; i < health; i++)
         {
             var healthObject = Instantiate(healthViewPrefab, healthView.transform);
@@ -89,7 +93,9 @@ public class GameManager : MonoBehaviour
             GameOver(true);
         }
         text.text = "Score : " + score;
-        text1.text = "Score : " + score;
+        GameOverPanel.text1.text = "Score : " + score;
+        GameWinPanel.text1.text = "Score : " + score;
+
     }
 
     private void GameOver(bool win)
@@ -97,13 +103,20 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         if(win)
         {
-            gameWin.SetActive(true);
+            GameWinPanel.Panel.SetActive(true);
         }
         else
         {
-            gameOver.SetActive(true);
+            GameOverPanel.Panel.SetActive(true);
         }
        
         isRunning = false;
     }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
 }
+
