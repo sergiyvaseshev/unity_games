@@ -1277,9 +1277,9 @@ MonoBehaviour:
     Panel: {fileID: 1636117857}
     RestartButton: {fileID: 1710193070}
   score: 0
-  Hard: {fileID: 0}
+  Hard: {fileID: 1095926561}
   Easy: {fileID: 1285114068}
-  Medium: {fileID: 0}
+  Medium: {fileID: 1429193978}
 --- !u!4 &1004604514
 Transform:
   m_ObjectHideFlags: 0

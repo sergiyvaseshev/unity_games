@@ -127,6 +127,14 @@ public class GameManager : MonoBehaviour
     {
         winScore *= 1;
 
+    }private void MediumGame ()
+    {
+        winScore *=2;
+
+    }private void HardGame ()
+    {
+        winScore *=3;
+
     }
 }
 
