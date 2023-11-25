@@ -40,12 +40,7 @@ public class GameManager : MonoBehaviour
       Hard.onClick.AddListener( HardGame);
 
 
-        for (int i = 0; i < health; i++)
-        {
-            var healthObject = Instantiate(healthViewPrefab, healthView.transform);
-            healthViewPrefabs.Add(healthObject);
-        }
-
+       
         UpdateScore(0);
         
     }
@@ -129,37 +124,45 @@ public class GameManager : MonoBehaviour
     }private void EasyGame ()
     {
         winScore *= 1;
+        health = 5;
 
-        isGameOver = false;
-        isRunning = true;
-        Startgame.gameObject.SetActive(false);
-        StartCoroutine(SpawnTarget());
+        InitGame();
 
     }
     private void MediumGame ()
     {
 
         winScore *=2;
+        health = 3;
 
-
-        isGameOver = false;
-        isRunning = true;
-        Startgame.gameObject.SetActive(false);
-        StartCoroutine(SpawnTarget());
+        InitGame();
 
 
     }
     private void HardGame ()
     {
         winScore *=3;
+        health = 2;
 
+
+        InitGame();
+    }
+
+    private void InitGame()
+    {
 
         isGameOver = false;
         isRunning = true;
+
+        for (int i = 0; i < health; i++)
+        {
+            var healthObject = Instantiate(healthViewPrefab, healthView.transform);
+            healthViewPrefabs.Add(healthObject);
+        }
+
+
         Startgame.gameObject.SetActive(false);
         StartCoroutine(SpawnTarget());
-
-
     }
 }
 
