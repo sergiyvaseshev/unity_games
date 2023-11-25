@@ -9,7 +9,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject[] enemyPrefab;
+    public GameObject[] enemyPrefabEasy;
+    public GameObject[] enemyPrefabMedium;
+    public GameObject[] enemyPrefabHard;
    public float maxTime;
     public TextMeshProUGUI text;
     public TextMeshProUGUI timerText;
@@ -64,13 +66,36 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    IEnumerator SpawnTarget()
+    IEnumerator SpawnTargetEasy ()
     {
         while(!isGameOver)
         {
             yield return new WaitForSeconds(spawnRate);
-            int index= Random.Range(0,enemyPrefab.Length);
-            Instantiate(enemyPrefab[index]);
+            int index= Random.Range(0,enemyPrefabEasy.Length);
+            Instantiate(enemyPrefabEasy[index]);
+
+        }
+
+    }
+    IEnumerator SpawnTargetMedium()
+    {
+        while(!isGameOver)
+        {
+            yield return new WaitForSeconds(spawnRate);
+            int index= Random.Range(0,enemyPrefabMedium.Length);
+            Instantiate(enemyPrefabMedium[index]);
+
+        }
+
+    }
+
+    IEnumerator SpawnTargetHard()
+    {
+        while(!isGameOver)
+        {
+            yield return new WaitForSeconds(spawnRate);
+            int index= Random.Range(0,enemyPrefabHard.Length);
+            Instantiate(enemyPrefabHard[index]);
 
         }
 
@@ -129,7 +154,7 @@ public class GameManager : MonoBehaviour
         spawnRate = 1f;
 
         InitGame();
-
+        StartCoroutine(SpawnTargetEasy());
     }
     private void MediumGame ()
     {
@@ -140,7 +165,7 @@ public class GameManager : MonoBehaviour
 
         InitGame();
 
-
+        StartCoroutine(SpawnTargetMedium());
     }
     private void HardGame ()
     {
@@ -150,6 +175,7 @@ public class GameManager : MonoBehaviour
 
 
         InitGame();
+        StartCoroutine(SpawnTargetHard());
     }
 
     private void InitGame()
@@ -166,7 +192,7 @@ public class GameManager : MonoBehaviour
 
 
         Startgame.gameObject.SetActive(false);
-        StartCoroutine(SpawnTarget());
+       
     }
 }
 
