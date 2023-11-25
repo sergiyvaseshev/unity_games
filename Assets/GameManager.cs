@@ -126,6 +126,8 @@ public class GameManager : MonoBehaviour
         winScore *= 1;
         health = 5;
 
+        spawnRate = 1f;
+
         InitGame();
 
     }
@@ -134,6 +136,7 @@ public class GameManager : MonoBehaviour
 
         winScore *=2;
         health = 3;
+        spawnRate = 0.6f;
 
         InitGame();
 
@@ -143,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         winScore *=3;
         health = 2;
+        spawnRate = 0.3f;
 
 
         InitGame();
