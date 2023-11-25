@@ -14,15 +14,16 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI text;
     public TextMeshProUGUI timerText;
     private float elapsedTime = 0.0f;
-    private bool isRunning = true;
+    private bool isRunning = false;
      private float spawnRate = 1.0f;
-    public bool isGameOver;
+    public bool isGameOver= true;
     public int health;
     public int winScore;
     public GameObject healthView;
     public GameObject healthViewPrefab;
     public List <GameObject> healthViewPrefabs=new();
 
+    public GameObject Startgame;
     public PanelData GameWinPanel;
     public PanelData GameOverPanel;
     public int score;
@@ -33,9 +34,11 @@ public class GameManager : MonoBehaviour
         GameWinPanel.RestartButton.onClick.AddListener(RestartGame);
         GameOverPanel.RestartButton.onClick.AddListener(RestartGame);
 
-        Hard.onClick.AddListener(RestartGame);
+      
        Easy .onClick.AddListener(EasyGame);
-      Medium  .onClick.AddListener(RestartGame);
+      Medium  .onClick.AddListener(MediumGame);
+      Hard.onClick.AddListener( HardGame);
+
 
         for (int i = 0; i < health; i++)
         {
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateScore(0);
-        StartCoroutine(SpawnTarget());
+        
     }
 
     private void Update()
@@ -127,13 +130,35 @@ public class GameManager : MonoBehaviour
     {
         winScore *= 1;
 
-    }private void MediumGame ()
+        isGameOver = false;
+        isRunning = true;
+        Startgame.gameObject.SetActive(false);
+        StartCoroutine(SpawnTarget());
+
+    }
+    private void MediumGame ()
     {
+
         winScore *=2;
 
-    }private void HardGame ()
+
+        isGameOver = false;
+        isRunning = true;
+        Startgame.gameObject.SetActive(false);
+        StartCoroutine(SpawnTarget());
+
+
+    }
+    private void HardGame ()
     {
         winScore *=3;
+
+
+        isGameOver = false;
+        isRunning = true;
+        Startgame.gameObject.SetActive(false);
+        StartCoroutine(SpawnTarget());
+
 
     }
 }

@@ -1262,12 +1262,13 @@ MonoBehaviour:
   maxTime: 30
   text: {fileID: 492164950}
   timerText: {fileID: 1238496785}
-  isGameOver: 0
+  isGameOver: 1
   health: 3
   winScore: 100
   healthView: {fileID: 1310518308}
   healthViewPrefab: {fileID: 8553902050324735450, guid: 8799ea021149894409181eafd656a578, type: 3}
   healthViewPrefabs: []
+  Startgame: {fileID: 1265737161}
   GameWinPanel:
     text1: {fileID: 2067443402}
     Panel: {fileID: 248207828}
